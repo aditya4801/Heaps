@@ -1,0 +1,20 @@
+Approach:
+Create a max-heap of first k elements
+for rest n-k elements if element<heap.top()....heap.pop()......heap.push(element);      
+Top most element will be the kth smallest element
+
+int kthSmallest(int arr[], int l, int r, int k){
+ priority_queue<int> pq;
+  for(int i=0; i<k; i++){
+   pq.push_back(arr[i]);                 //cretion of max heap
+  }
+for(int i=k; i<=r; i++){
+  if(arr[i]< pq.top()){                 //comparison of top elem to rest of the elem
+    pq.pop();
+    pq.push(arr[i]);
+   }
+  }
+  int ans= pq.top();                   //fetching top elem for answer
+  
+  return ans;
+}
